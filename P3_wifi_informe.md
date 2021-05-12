@@ -7,6 +7,7 @@
 >Declaramos las cabeceras a utilizar
 
 ```
+#include <Arduino.h>
 #include <WiFi.h>
 #include <WebServer.h>
 ```
@@ -43,6 +44,7 @@ void setup() {
         delay(1000);
         Serial.print(".");
     }
+
     Serial.println("");
     Serial.println("WiFi connected successfully");
     Serial.print("Got IP: ");
@@ -79,7 +81,7 @@ String HTML = "<!DOCTYPE html>\
 </html>";
 
 void handle_root() {
-server.send(200, "text/html", HTML);
+    server.send(200, "text/html", HTML);
 }
 ```
 
@@ -92,7 +94,9 @@ Try Connecting to
 ************* //nombre red wifi
 ....
 WiFi connected successfully
-Got IP: ***.***.*.** // en mi caso 192.168.1.72
+Got IP: ***.***.*.** // en mi caso 192.168.1.71
 HTTP server started
 ```
+
+![Salida del monitor](salida_WiFi.png)
 ![Resultados de la web](web1.jpg)

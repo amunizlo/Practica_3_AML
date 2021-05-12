@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <WiFi.h>
 #include <WebServer.h>
 
@@ -14,32 +15,32 @@ String HTML = "<!DOCTYPE html>\
 </html>";
 
 void handle_root() {
-server.send(200, "text/html", HTML);
+    server.send(200, "text/html", HTML);
 }
 
 void setup() {
-Serial.begin(115200);
-Serial.println("Try Connecting to ");
-Serial.println(ssid);
+    Serial.begin(115200);
+    Serial.println("Try Connecting to ");
+    Serial.println(ssid);
 
-WiFi.begin(ssid, password);
+    WiFi.begin(ssid, password);
 
-while (WiFi.status() != WL_CONNECTED) {
-delay(1000);
-Serial.print(".");
-}
-Serial.println("");
-Serial.println("WiFi connected successfully");
-Serial.print("Got IP: ");
-Serial.println(WiFi.localIP());
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.print(".");
+    }
+    Serial.println("");
+    Serial.println("WiFi connected successfully");
+    Serial.print("Got IP: ");
+    Serial.println(WiFi.localIP());
 
-server.on("/", handle_root);
+    server.on("/", handle_root);
 
-server.begin();
-Serial.println("HTTP server started");
-delay(100);
+    server.begin();
+    Serial.println("HTTP server started");
+    delay(100);
 }
 
 void loop() {
-server.handleClient();
+    server.handleClient();
 }

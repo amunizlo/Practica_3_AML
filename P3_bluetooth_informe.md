@@ -22,9 +22,9 @@ En esta función incicializamos el serial a una velocidad de 115200 (ha de coinc
 A continuación inicializamos también el dispositivo bluetooth poniendole un nombre e informamos por pantalla de que el dispositivo está inicializado y ya se puede emparejar con otro dispositivo mediante bluetooth.
 
 ```
-void setup()
-{  Serial.begin(115200);
-   SerialBT.begin("ESP32"); //Bluetooth device name
+void setup(){
+   Serial.begin(115200);
+   SerialBT.begin("ESP32");
    Serial.println("The device started, now you can pair it with bluetooth!");
 }
 ```
@@ -34,11 +34,11 @@ void setup()
 En este bucle lo que conseguimos es que el dispositivo lea lo que recibe por bluetooth y lo escriba por el puerto serie.
 
 ```
-void loop()
-{ if ( Serial.available())
-        SerialBT.write(Serial.read());
+void loop(){
+   if ( Serial.available())
+      SerialBT.write(Serial.read());
   if (SerialBT.available())
-     Serial.write(SerialBT.read());
+      Serial.write(SerialBT.read());
   delay(20);
 }
 ```
